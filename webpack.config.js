@@ -20,6 +20,9 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, './src'),
   },
+  watchOptions: {
+    poll: true
+  },
   module: {
     rules: [
       {
