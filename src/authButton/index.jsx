@@ -7,7 +7,6 @@ class AuthButton extends Component {
   }
 
   handleClientLoad(gapiLoaded) {
-    console.log(gapiLoaded);
     if (gapiLoaded) gapi.load('client:auth2', this.initClient.bind(this));
   }
 
@@ -18,10 +17,7 @@ class AuthButton extends Component {
         clientId: oauth2.client_id,
         scope: scopes.join(" ")
     }).then(() => {
-      // Listen for sign-in state changes.
       gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus.bind(this));
-
-      // Handle the initial sign-in state.
       this.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     });
   }
